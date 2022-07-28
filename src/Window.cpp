@@ -8,9 +8,11 @@
 //---------------- Window class implementation ----------------//
 //-------------------------------------------------------------//
 
-Window::Window(const char *name, int width = 800, int height = 600) {
+Window::Window(const char *name, int width = 800, int height = 600)
+:   _name(name), _width(width), _height(height)
+{
     // initialize glfw framework
-    if(glfwInit() != GLFW_FALSE) {
+    if(glfwInit() == GLFW_FALSE) {
         throw WND_EXC;
     }
 
@@ -37,6 +39,10 @@ Window::Window(const char *name, int width = 800, int height = 600) {
     if(!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
         throw WND_EXC;
     }
+
+    /* std::cout << glGetString(GL_VERSION) << '\n'
+    << glGetString(GL_RENDERER) << '\n'
+    << glGetString(GL_SHADING_LANGUAGE_VERSION) << '\n'; */
 }
 
 // end using glfw
@@ -69,6 +75,20 @@ void Window::swapBuffers() {
 // Processes all pending events.
 void Window::pollEvents() {
     glfwPollEvents();
+}
+
+// clears frontbuffer at the beginning of new frame
+void Window::clearBuffer() {
+    glClearColor(0.3f, 0.2f, 0.7f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT);
+}
+
+const char *Window::getName() const noexcept {
+    return _name;
+}
+
+Window::resolution Window::getResolution() const noexcept {
+    return {_width, _height};
 }
 
 //-----------------------------------------------------------------//
