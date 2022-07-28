@@ -5,6 +5,12 @@
 #include "Exception.hpp"
 
 class Window {
+private:
+    struct resolution {
+        int x;
+        int y;
+    };
+
 public:
     explicit Window(const char *name, int width, int height);
 
@@ -20,10 +26,16 @@ public:
 
     void pollEvents();
 
+    void clearBuffer();
+
+    const char *getName() const noexcept;
+
+    resolution getResolution() const noexcept;
+    
 private:
+    const char *_name;
     int _width;
     int _height;
-    const char *_name;
     GLFWwindow *windowHandle;
     
     static void framebuffer_size_callback(GLFWwindow *window, int width, int height);
