@@ -4,6 +4,9 @@
 # bin directory
 /bin
 
+# some .json files
+/.vscode/settings.json
+
 # Prerequisites
 *.d
 
