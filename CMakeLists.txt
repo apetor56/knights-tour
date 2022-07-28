@@ -11,7 +11,7 @@ elseif(UNIX OR APPLE)
     set(CMAKE_STATIC_LIBRARY_SUFFIX ".a")
 endif()
 
-add_compile_options(-std=c++11 -g -Wall -pedantic)
+add_compile_options(-std=c++17 -g -Wall -pedantic)
 
 # set more convenient .exe output directory
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin")
@@ -32,6 +32,7 @@ add_executable(main
     ${SOURCE_PATH}/main.cpp
     ${SOURCE_PATH}/Window.cpp
     ${SOURCE_PATH}/Exception.cpp
+    ${SOURCE_PATH}/Shader.cpp
 )
 
 # include header files and libraries
