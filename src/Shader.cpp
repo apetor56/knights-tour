@@ -86,6 +86,14 @@ unsigned int Shader::getShader() const noexcept {
    return _shaderID;
 }
 
+void Shader::enableAttrib(int index) {
+        glEnableVertexAttribArray(index);
+}
+
+void Shader::disableAttrib(int index) {
+    glDisableVertexAttribArray(index);
+}
+
 //-----------------------------------------------------------------//
 //---------------- Shader Exception implementation ----------------//
 //-----------------------------------------------------------------//
