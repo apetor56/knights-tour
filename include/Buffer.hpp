@@ -2,6 +2,7 @@
 #define BUFFER_HPP
 
 #include <glad.h>
+#include <iostream>
 #include <typeinfo>
 #include "AttributeLayout.hpp"
 
@@ -38,44 +39,9 @@ public:
         glBindBuffer(bufferType, 0);
     }
 
-    // manage attributes information on GPU side
-    void vertexAttrib(Attributes attrib, AttributeLayout<T>& layout) {
-        int stride = layout.getStride();
-        void *offset = layout.getOffset(attrib);
-        const int& attribSize = vec[attrib];
-
-        glEnableVertexAttribArray(attrib);
-        glVertexAttribPointer(attrib, attribSize, dataType(), GL_FALSE, stride, offset);
-    }
-
-    void enableAttrib(int index) {
-        glEnableVertexAttribArray(index);
-    }
-
-    void disableAttrib(int index) {
-        glDisableVertexAttribArray(index);
-    }
-
 private:
     unsigned int _bufferID[size];
     unsigned int _currentBound;
-
-    // returns gl macro depended on data
-    // type store in buffer
-    // float -> GL_FLOAT
-    // int -> GL_INT ...
-    constexpr int dataType() {
-        const std::type_info& type = typeid(T);
-        
-        if(type == typeid(float)) {
-            return GL_FLOAT;
-        }
-        if(type == typeid(unsigned int)) {
-            return GL_UNSIGNED_INT;
-        }
-        
-        return -1;
-    }
 };
 
 #endif // BUFFER_HPP
