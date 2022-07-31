@@ -37,8 +37,15 @@ private:
     int _width;
     int _height;
     GLFWwindow *windowHandle;
-    
+
+    static struct CursorPos {
+        double x;
+        double y;
+    } mouse;
+
     static void framebuffer_size_callback(GLFWwindow *window, int width, int height);
+
+    static void cursor_position_callback(GLFWwindow* window, double xpos, double ypos);
 };
 
 class WindowException : public Exception {
