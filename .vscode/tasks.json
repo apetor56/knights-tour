@@ -9,7 +9,7 @@
         {
             "label": "CMake build task",
             "type": "shell",
-            "command": "cmake . && cmake --build .",
+            "command": "cmake --build .",
             "group":{
                 "kind": "build",
                 "isDefault": true
