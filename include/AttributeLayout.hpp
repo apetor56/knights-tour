@@ -14,15 +14,6 @@
 #define TEXTURE (1 << 2)
 #define ALL 3
 
-// values used in glVertexAttribPointer() function
-// that represent vector's size in vertex shader (vec1, vec2, vec3, vec4)
-const int vec[] {
-    3,      // position
-    3,      // color
-    3,      // texture
-    0       // end
-};
-
 // values used in glVertexAttribPinter() and
 // glEnableVertexArray() functions that represent
 // attribute's index (layout int vertex shader)
@@ -46,7 +37,7 @@ public:
         for(int attrib = Position; attrib != End; attrib++) {
             if(isUsed(attrib)) {
                 _offsets[attrib] = _stride; 
-                _stride += vec[attrib];
+                _stride += _attribSize[attrib];
             }
         }
     }
@@ -55,8 +46,39 @@ public:
 
     AttributeLayout& operator=(const AttributeLayout& other) = delete;
 
+    // changes given attrib with new size
+    // (do this before sending data to vertex buffer!!!)
+    void setAttribSize(Attributes attrib, int size) {
+        if(size > 0 && size <= 4) {
+            _attribSize[attrib] = size;
+        }
+        else {
+            std::cerr << "Passed wrong attribute size: " << size
+            << ". You could pass only values: 1, 2, 3 or 4\n";
+        }
+
+        refreshInfo();
+    }
+
+    int getAttribSize(Attributes attrib) const {
+        return _attribSize[attrib];
+    }
+
+    // calculates stride and offsets again due to
+    // changes in specific attribute's size (_attribSize[])
+    // do the same what in constructor
+    void refreshInfo() {
+        _stride = 0;
+        for(int attrib = Position; attrib != End; attrib++) {
+            if(isUsed(attrib)) {
+                _offsets[attrib] = _stride; 
+                _stride += _attribSize[attrib];
+            }
+        }
+    }
+
     // checks if given attribute is used
-    bool isUsed(int attrib) {
+    bool isUsed(int attrib) const {
         return _usedAttrib[attrib];
     }
 
@@ -66,14 +88,19 @@ public:
     }
 
     // return offset of given attribute (cast to void*)
-    void *getOffset(Attributes attrib) {
+    void *getOffset(Attributes attrib) const {
         return reinterpret_cast<void*>(_offsets[attrib] * sizeof(T));
+    }
+
+    int getOffseti(Attributes attrib) const {
+        return _offsets[attrib];
     }
 
 private:
     int _stride;
     int _offsets[4];
-    std::bitset<4> _usedAttrib; 
+    std::bitset<4> _usedAttrib;
+    int _attribSize[4] = {3, 3, 3, 0};
 };
 
 #endif // ATTRIBUTE_LAYOUT_HPP
