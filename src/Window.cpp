@@ -8,6 +8,8 @@
 //---------------- Window class implementation ----------------//
 //-------------------------------------------------------------//
 
+Window::CursorPos Window::mouse = {0.0, 0.0};
+
 Window::Window(const char *name, int width = 800, int height = 600)
 :   _name(name), _width(width), _height(height)
 {
@@ -35,6 +37,8 @@ Window::Window(const char *name, int width = 800, int height = 600)
     // change viewport setting while resizing window event
     glfwSetFramebufferSizeCallback(windowHandle, framebuffer_size_callback);
 
+    glfwSetCursorPosCallback(windowHandle, cursor_position_callback);
+
     // manage access for OpelGL functions' location (memory)
     if(!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
         throw WND_EXC;
@@ -55,10 +59,20 @@ void Window::framebuffer_size_callback(GLFWwindow *window, int width, int height
     glViewport(0, 0, width, height);
 }
 
+void Window::cursor_position_callback(GLFWwindow* window, double xpos, double ypos) {
+    mouse.x = xpos;
+    mouse.y = ypos;
+}
+
 // Checks input from mouse and keyboard.
 void Window::processInput() {
     if(glfwGetKey(windowHandle, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
         glfwSetWindowShouldClose(windowHandle, true);
+    }
+
+    int state = glfwGetMouseButton(windowHandle, GLFW_MOUSE_BUTTON_LEFT);
+    if(state == GLFW_PRESS) {
+        std::cout << '[' << mouse.x << ',' << mouse.y << "]\n";
     }
 }
 
