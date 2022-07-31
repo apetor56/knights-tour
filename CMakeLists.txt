@@ -33,6 +33,7 @@ add_executable(main
     ${SOURCE_PATH}/Window.cpp
     ${SOURCE_PATH}/Exception.cpp
     ${SOURCE_PATH}/Shader.cpp
+    ${SOURCE_PATH}/Renderer.cpp
 )
 
 # include header files and libraries
