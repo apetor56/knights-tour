@@ -25,6 +25,7 @@ public:
         if(index > static_cast<unsigned int>(size)) {
             throw std::out_of_range("wrong index passed to bind() function");
         }
+        glBindVertexArray(_vertexArrayID[0]);
     }
 
     void unbind() noexcept {
