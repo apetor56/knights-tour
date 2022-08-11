@@ -40,13 +40,13 @@ set DIR=%CD%
 set DIR=%DIR:\=/%
 echo %DIR%
 
-if NOT exist %DIR%/.build (
-    mkdir .build
-    cd %DIR%/.build
+if NOT exist %DIR%/build (
+    mkdir build
+    cd %DIR%/build
     cmake ../ -G "MinGW Makefiles" -B . -S ../
     cd %DIR%
 )
-cmake --build %DIR%/.build
+cmake --build %DIR%/build
 cd %DIR%/Algorithm/bin
 
 
