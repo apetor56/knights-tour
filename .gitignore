@@ -2,7 +2,10 @@
 /build
 
 # bin directory
-/bin
+**/bin
+
+# converted output from KnightMain.cpp
+**/converted.txt
 
 # some .json files
 /.vscode/settings.json
