@@ -1,14 +1,16 @@
 @echo off
 SETLOCAL EnableDelayedExpansion
 
+set /A args=0
 for %%x in (%*) do (
     set /A args+=1
 )
 
 if NOT %args%==2 (
   echo Passed wrong number of arguments.
-  echo Correct usage: %setup.bat [size] [start position]
-  echo Minimum size == 5.
+  echo Correct usage: ./setup.bat [size] [start position]
+  echo Minimum size must be equal 5.
+  GOTO EXIT
 )
 if %1 LSS 5 (
     echo Minimum size must be equal 5.
