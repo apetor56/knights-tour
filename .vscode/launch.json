@@ -8,9 +8,11 @@
             "name": "main debugging",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/bin/main.exe",
-            "args": [],
-            "stopAtEntry": true,
+            "program": "${workspaceFolder}/OpenGL/bin/main.exe",
+            "args": [
+                "5"
+            ],
+            "stopAtEntry": false,
             "cwd": "${fileDirname}",
             "environment": [],
             "externalConsole": false,
