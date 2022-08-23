@@ -28,7 +28,7 @@ if %2 LSS 0 (
     echo Position must be in range from 0 to %maxPos%.
     GOTO EXIT
 )
-if %2 GEQ %maxPos% (
+if %2 GTR %maxPos% (
     echo Error: position greater than %maxPos%.
     echo Position must be in range from 0 to %maxPos%.
     GOTO EXIT
