@@ -96,7 +96,7 @@ void Renderer::generateData(int n) {
 
     // defined start points (upper left corner) and length
     // (you could change 'start_x' to scale chessboard)
-    float start_x = -0.8f;
+    float start_x = -1.0f;
     float start_y = -start_x;
     float length = 2 * start_y / n;
 
@@ -176,7 +176,7 @@ void Renderer::setKnightData(float start_x, float start_y, float length) {
 }
 
 void Renderer::drawKnight(int move_x, int move_y) {
-    static float length = 1.6f / _size;
+    static float length = 2.0f / _size;
     static float x = 0.0f;
     static float y = 0.0f;
     x += move_x * length;
