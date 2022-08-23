@@ -4,6 +4,7 @@ in vec2 Texcoord;
 out vec4 fragColor;
 
 uniform sampler2D knightTex;
+uniform sampler2D gachiTex;
 
 void main() {
     vec4 texColor = texture(knightTex, Texcoord);
@@ -11,5 +12,5 @@ void main() {
         discard;
     }
 
-    fragColor = texColor;
+    fragColor = texture(gachiTex, Texcoord);
 }
