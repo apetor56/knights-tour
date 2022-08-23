@@ -7,15 +7,9 @@
 #include "Texture2D.hpp"
 #include "Window.hpp"
 
-void test(Window& window) {
-    window.pollEvents();
-    window.processInput();
-}
-
 int main(int argc, const char *argv[]) {
     try {
         Window window("ja nie komar", 800, 800);
-        Renderer renderer;
 
         if(argc != 3) {
             return -1;
@@ -23,8 +17,9 @@ int main(int argc, const char *argv[]) {
 
         int size = atoi(argv[1]);
         int startPos = atoi(argv[2]);
+        Renderer renderer(size);
 
-        renderer.setChessBoard(size, startPos);
+        renderer.setChessBoard(startPos);
         // glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
         int x = 0, old_x = 0;
@@ -50,7 +45,7 @@ int main(int argc, const char *argv[]) {
             window.pollEvents();
 
             if(i < size * size) {
-                std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+                std::this_thread::sleep_for(std::chrono::milliseconds(600));
             }
         }
     }
