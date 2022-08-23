@@ -10,9 +10,9 @@
             "request": "launch",
             "program": "${workspaceFolder}/OpenGL/bin/main.exe",
             "args": [
-                "5"
+                "8", "0"
             ],
-            "stopAtEntry": false,
+            "stopAtEntry": true,
             "cwd": "${fileDirname}",
             "environment": [],
             "externalConsole": false,
