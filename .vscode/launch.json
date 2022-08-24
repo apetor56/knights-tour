@@ -10,9 +10,9 @@
             "request": "launch",
             "program": "${workspaceFolder}/OpenGL/bin/main.exe",
             "args": [
-                "8", "0"
+                "5", "0 < ../Algorithm/converted.txt"
             ],
-            "stopAtEntry": true,
+            "stopAtEntry": false,
             "cwd": "${fileDirname}",
             "environment": [],
             "externalConsole": false,
