@@ -12,6 +12,7 @@ int main(int argc, const char *argv[]) {
         Window window("ja nie komar", 800, 800);
 
         if(argc != 3) {
+            std::cerr << "Wrong number of arguments\n";
             return -1;
         }
 
