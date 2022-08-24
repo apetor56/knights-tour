@@ -20,48 +20,29 @@ public:
     void drawKnight(int move_x, int move_y);
 
 private:
-    // buffers, VAO and shaders for chessboard
-    Buffer<GL_ARRAY_BUFFER, float> _vboChess;
-    Buffer<GL_ELEMENT_ARRAY_BUFFER, unsigned int> _eboChess;
-    VertexArray _vaoChess;
-    Shader _vertexChess;
-    Shader _fragmentChess;
-    unsigned int _programChess;
-
-    // buffers, VAO and shaders for chessboard
-    Buffer<GL_ARRAY_BUFFER, float> _vboKnight;
-    Buffer<GL_ELEMENT_ARRAY_BUFFER, unsigned int> _eboKnight;
-    VertexArray _vaoKnight;
-    Shader _vertexKnight;
-    Shader _fragmentKnight;
-    unsigned int _programKnight;
-
-    // buffers, VAO and shaders for line
-    Buffer<GL_ARRAY_BUFFER, float> _vboLine;
-    Buffer<GL_ELEMENT_ARRAY_BUFFER, unsigned int> _eboLine;
-    VertexArray _vaoLine;
-    Shader _vertexLine;
-    Shader _fragmentLine;
-    unsigned int _programLine;
-    float *_verticesLine;
-    unsigned int *_indexesLine;
-    int _lineCounter;
-
-
-    float *_chessData;
-    unsigned int *_indexes;
     int _size;
+    int _lineCounter;
     int _startPos;
+    struct Graphics {
+        Graphics(const char *vertexPath, const char *fragmentPath);
+        Buffer<GL_ARRAY_BUFFER, float> vbo;
+        Buffer<GL_ELEMENT_ARRAY_BUFFER, unsigned int> ebo;
+        VertexArray vao;
+        Shader vertexShader;
+        Shader fragmentShader;
+        unsigned int program;
+        float *vertices;
+        unsigned int *indices;
+    } _chessboard, _knight, _line;
 
-    void generateData(int n);
 
-    void setSquare(float& x, float& y, float colorFlag) const;
+    void generateChessData();
 
-    void setKnightData(float start_x, float start_y, float length);
+    void setSquare(const float& x, const float& y, const float& colorFlag) const;
 
-    void setIndexes();
+    void setKnightData(float start_x, float start_y, const float& length);
 
-    // void changeColor(float x, float y);
+    void setChessIndices();
 
     void initializeLine(float x, float y);
 
