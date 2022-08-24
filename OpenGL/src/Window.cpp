@@ -24,7 +24,7 @@ Window::Window(const char *name, int width = 800, int height = 600)
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-    glfwWindowHint(GLFW_SAMPLES, 8);
+    glfwWindowHint(GLFW_SAMPLES, 16);
 
     // window creation
     if(!(windowHandle = glfwCreateWindow(width, height, name, nullptr, nullptr))) {
