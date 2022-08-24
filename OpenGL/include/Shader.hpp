@@ -1,7 +1,6 @@
 #ifndef SHADER_HPP
 #define SHADER_HPP
 
-#include <optional>
 #include "Exception.hpp"
 #include "AttributeLayout.hpp"
 
@@ -42,7 +41,7 @@ public:
 private:
     unsigned int _shaderID;
 
-    static std::optional<std::string> getShaderSourceCode(const char *name);
+    static std::string getShaderSourceCode(const char *name);
 
     // returns specific GL macro depeding on type od data
     // stored in buffers
