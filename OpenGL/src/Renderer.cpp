@@ -254,7 +254,9 @@ void Renderer::setChessIndices() {
 /* Sets initial data for line. */
 void Renderer::initializeLine(float x, float y) {
     /* sets line width depending on chessboard size */
-    glLineWidth(3.0f / _size * 8.0f);
+    // glLineWidth(3.0f / _size * 8.0f);
+    glEnable(GL_LINE_SMOOTH);
+    glLineWidth(1.0f);
 
     /* vertex has 2 positions, so line's vertex data size will be equal 2 * _size * _size */
     _line.vertices = new float[2 * _size * _size]();
