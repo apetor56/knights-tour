@@ -1,5 +1,5 @@
 #include <sstream>
-#include <glad.h>
+#include <GLAD/glad.h>
 #include "Window.hpp"
 
 #define WND_EXC WindowException(__LINE__, __FILE__)
@@ -86,7 +86,7 @@ void Window::processInput() {
 
     int state = glfwGetMouseButton(windowHandle, GLFW_MOUSE_BUTTON_LEFT);
     if(state == GLFW_PRESS) {
-        std::cout << '[' << mouse.x << ',' << mouse.y << "]\n";
+        // std::cout << '[' << mouse.x << ',' << mouse.y << "]\n";
     }
 }
 
@@ -117,6 +117,10 @@ const char *Window::getName() const noexcept {
 
 Window::resolution Window::getResolution() const noexcept {
     return {_width, _height};
+}
+
+Window::operator GLFWwindow*() const {
+    return windowHandle;
 }
 
 void APIENTRY Window::glDebugOutput(GLenum source, GLenum type, unsigned int id, GLenum severity, 
