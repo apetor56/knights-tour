@@ -1,7 +1,7 @@
 #ifndef WINDOW_HPP
 #define WINDOW_HPP
 
-#include <glfw3.h>
+#include <GLFW/glfw3.h>
 #include "Exception.hpp"
 
 class Window {
@@ -31,6 +31,8 @@ public:
     const char *getName() const noexcept;
 
     resolution getResolution() const noexcept;
+
+    operator GLFWwindow*() const;
     
 private:
     const char *_name;
