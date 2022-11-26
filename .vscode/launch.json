@@ -10,9 +10,9 @@
             "request": "launch",
             "program": "${workspaceFolder}/bin/main.exe",
             "args": [
-                "5", "0 < ../Algorithm/converted.txt"
+                "5", "0"
             ],
-            "stopAtEntry": false,
+            "stopAtEntry": true,
             "cwd": "${fileDirname}",
             "environment": [],
             "externalConsole": false,
