@@ -1,4 +1,4 @@
-#include <glad.h>
+#include <GLAD/glad.h>
 #include <sstream>
 #include <fstream>
 #include <cstring>

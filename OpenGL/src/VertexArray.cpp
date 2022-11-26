@@ -1,4 +1,4 @@
-#include <glad.h>
+#include <GLAD/glad.h>
 #include <stdexcept>
 #include <iostream>
 
