@@ -8,7 +8,7 @@
             "name": "main debugging",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/OpenGL/bin/main.exe",
+            "program": "${workspaceFolder}/bin/main.exe",
             "args": [
                 "5", "0 < ../Algorithm/converted.txt"
             ],

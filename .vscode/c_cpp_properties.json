@@ -4,8 +4,7 @@
             "name": "Win32",
             "includePath": [
                 "${workspaceFolder}/**",
-                "${workspaceFolder}/OpenGL/include",
-                "${workspaceFolder}/Algorithm/include"
+                "${workspaceFolder}/include"
             ],
             "defines": [
                 "_DEBUG",
