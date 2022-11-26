@@ -18,7 +18,8 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/bin")
 
 # declaring paths for source, include and libraries 
 set(SOURCE_PATH  "${CMAKE_CURRENT_SOURCE_DIR}/src")
-set(INCLUDE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/include")
+set(INCLUDE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/include"
+                 "${CMAKE_CURRENT_SOURCE_DIR}/include/imgui")
 set(LIB_PATH     "${CMAKE_CURRENT_SOURCE_DIR}/lib")
 
 # list of libs linked later against main program
@@ -37,6 +38,15 @@ add_executable(main
     ${SOURCE_PATH}/stb_image.cpp
     ${SOURCE_PATH}/Texture2D.cpp
     ${SOURCE_PATH}/VertexArray.cpp
+    ${SOURCE_PATH}/KnightsTour.cpp
+
+    ${SOURCE_PATH}/imgui/imgui.cpp
+    ${SOURCE_PATH}/imgui/imgui_demo.cpp
+    ${SOURCE_PATH}/imgui/imgui_draw.cpp
+    ${SOURCE_PATH}/imgui/imgui_impl_opengl3.cpp
+    ${SOURCE_PATH}/imgui/imgui_impl_glfw.cpp
+    ${SOURCE_PATH}/imgui/imgui_tables.cpp
+    ${SOURCE_PATH}/imgui/imgui_widgets.cpp
 )
 
 # include header files and libraries
