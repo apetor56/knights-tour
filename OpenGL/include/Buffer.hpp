@@ -1,7 +1,7 @@
 #ifndef BUFFER_HPP
 #define BUFFER_HPP
 
-#include <glad.h>
+#include <glad/glad.h>
 #include <iostream>
 #include <typeinfo>
 #include "AttributeLayout.hpp"
