@@ -51,7 +51,7 @@ void Renderer::setChessBoard(int startPos) {
 
 /* Draws chessboard. */
 void Renderer::drawChessBoard() const {
-    static const int indicesNum = _size * _size * 6; 
+    const int indicesNum = _size * _size * 6; 
     _chessboard.vao.bind();
     Shader::useProgram(_chessboard.program);
     glDrawElements(GL_TRIANGLES, indicesNum, GL_UNSIGNED_INT, (void*)0);
@@ -62,15 +62,15 @@ void Renderer::drawChessBoard() const {
 (x,y) in function's signature -> lefl upper corner of square. */
 void Renderer::setSquare(const float& x, const float& y, const float& colorFlag) const {
     // side's length
-    static float length = 2 * y / _size;
+    float length = 2.0f / _size;
 
     /* this values tell us, how to move given x and y to calculete square's coordinates
     1 -> to upper left corner, 2 -> to upper rigth corner,
     3 -> to bottom rigth corner, 4 -> to bottom left corner */
-    static float translate_x[] {
+    float translate_x[] {
         0, length, length, 0
     };
-    static float translate_y[] {
+    float translate_y[] {
         0, 0, -length, -length
     };
 
@@ -85,6 +85,10 @@ void Renderer::setSquare(const float& x, const float& y, const float& colorFlag)
         _chessboard.vertices[i + 2] = colorFlag;
 
         i += 3;
+    }
+
+    if(i >= _size * _size * 12) {
+        i = 0;
     }
 }
 
@@ -254,9 +258,9 @@ void Renderer::setChessIndices() {
 /* Sets initial data for line. */
 void Renderer::initializeLine(float x, float y) {
     /* sets line width depending on chessboard size */
-    // glLineWidth(3.0f / _size * 8.0f);
     glEnable(GL_LINE_SMOOTH);
-    glLineWidth(1.0f);
+    // glLineWidth(1.0f);
+    glLineWidth(3.0f / _size * 8.0f);
 
     /* vertex has 2 positions, so line's vertex data size will be equal 2 * _size * _size */
     _line.vertices = new float[2 * _size * _size]();
