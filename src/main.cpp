@@ -13,7 +13,13 @@
 #include "Window.hpp"
 #include "KnightsTour.hpp"
 
-void renderGUI(int& size, int& startPos) {
+void initGUI(GLFWwindow *handle, const char *glslVersion = "#version 430") {
+    ImGui::CreateContext();
+    ImGui_ImplGlfw_InitForOpenGL(handle, true);
+    ImGui_ImplOpenGL3_Init("#version 430");
+}
+
+bool renderGUI(int& size, int& startPos, int& speed) {
     // Start the Dear ImGui frame
     ImGui_ImplOpenGL3_NewFrame();
     ImGui_ImplGlfw_NewFrame();
@@ -24,7 +30,10 @@ void renderGUI(int& size, int& startPos) {
 
     ImGui::Begin("Settings");
     if(ImGui::Button("start")) {
-        std::cout << "nacisnieto\n";
+        ImGui::End();
+        ImGui::Render();
+        ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+        return true;
     }
 
     ImGui::Text("size");
@@ -35,19 +44,20 @@ void renderGUI(int& size, int& startPos) {
 
     ImGui::Text("start position column");
     ImGui::SliderInt("   ", &column, 0, size - 1);
-    startPos = size * column + row;
+    startPos = size * row + column;
     
-    int speed;
     ImGui::Text("speed");
-    ImGui::SliderInt("    ", &speed, 0, 10);
+    ImGui::SliderInt("    ", &speed, 1, 10);
+
 
     ImGui::End();
-
     ImGui::Render();
     ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
+    return false;
 }
 
-void shutdownGUI() {
+inline void shutdownGUI() {
     ImGui_ImplOpenGL3_Shutdown();
     ImGui_ImplGlfw_Shutdown();
     ImGui::DestroyContext();
@@ -55,33 +65,30 @@ void shutdownGUI() {
 
 int main(int argc, const char *argv[]) {
     try {
-        Window window("ja nie komar", 800, 800);
-        const char *glsl_version = "#version 430";
-
-        ImGui::CreateContext();
-        ImGui_ImplGlfw_InitForOpenGL(window, true);
-        ImGui_ImplOpenGL3_Init(glsl_version);
+        Window window("ja nie komar", 900, 900);
+        initGUI(window);
         
-        if(argc != 3) {
-            std::cerr << "Wrong number of arguments\n";
-            return -1;
+        int size = 8;
+        int startPos = 0;
+        int speed = 1;
+        
+        Renderer tmp(size);
+        tmp.setChessBoard(startPos);
+
+        while(window.shouldClose() == false) {
+            window.clearBuffer();
+
+            tmp.drawChessBoard();
+            if(renderGUI(size, startPos, speed) == true) {
+                break;
+            }
+
+            window.swapBuffers();
+            window.pollEvents();
+            window.processInput();
         }
 
-        int size = atoi(argv[1]);
-        int startPos = atoi(argv[2]);
         Renderer renderer(size);
-
-        // renderer.setChessBoard(startPos);
-        // window.clearBuffer();
-        // window.pollEvents();
-        // window.processInput();
-        // renderer.drawChessBoard();
-
-
-        // window.swapBuffers();
-
-        // while(true);
-
         KnightTour knight(size);
         bool *visited = new bool[size * size]();
         knight.findSolution(startPos, visited, std::vector<int>({startPos}));
@@ -104,7 +111,7 @@ int main(int argc, const char *argv[]) {
             end = std::chrono::high_resolution_clock::now();
             elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin);
 
-            if(elapsed.count() >= 600) {
+            if(elapsed.count() >= 600 / speed) {
                 window.clearBuffer();
 
                 renderer.drawChessBoard();
@@ -117,18 +124,19 @@ int main(int argc, const char *argv[]) {
                     renderer.drawKnight(0, 0);
                 }
 
-                renderGUI(size, startPos);
+                renderGUI(size, startPos, speed);
                 begin = end;
             }
             else {
                 window.clearBuffer();
                 renderer.drawChessBoard();
                 renderer.drawKnight(0, 0);
-                renderGUI(size, startPos);
+                renderGUI(size, startPos, speed);
                 window.swapBuffers();
                 window.pollEvents();
                 window.processInput();
             }
+
         }
     }
     catch(Exception& e) {
