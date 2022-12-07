@@ -12,5 +12,5 @@ void main() {
         discard;
     }
 
-    fragColor = texture(gachiTex, Texcoord);
+    fragColor = texture(knightTex, Texcoord);
 }
