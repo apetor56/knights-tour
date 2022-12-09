@@ -3,13 +3,13 @@
     // for the documentation about the tasks.json format
     "version": "2.0.0",
     "options": {
-        "cwd": "${workspaceFolder}/build"
+        "cwd": "${workspaceFolder}"
     },
     "tasks": [
         {
             "label": "CMake build task",
             "type": "shell",
-            "command": "cmake . && cmake --build .",
+            "command": "cmake -S . -B build -G \"Unix Makefiles\" -D CMAKE_BUILD_TYPE=Release && cmake --build build",
             "group":{
                 "kind": "build",
                 "isDefault": true
