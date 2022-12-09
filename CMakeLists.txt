@@ -11,7 +11,13 @@ elseif(UNIX OR APPLE)
     set(CMAKE_STATIC_LIBRARY_SUFFIX ".a")
 endif()
 
-add_compile_options(-std=c++17 -g -Wall -pedantic -D glDebug)
+# compile options for release
+set(CMAKE_CXX_FLAGS_RELEASE_INIT "-std=c++17 -Wall -pedantic")
+
+# compile options for debugging (including glDebugMessageControl)
+# warning: there will be error relative to line width
+# (without debugging we can change line width over 1)
+set(CMAKE_CXX_FLAGS_DEBUG_INIT "-std=c++17 -g -Wall -pedantic -D glDebug")
 
 # set more convenient .exe output directory
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/bin")
@@ -49,6 +55,6 @@ add_executable(main
     ${SOURCE_PATH}/imgui/imgui_widgets.cpp
 )
 
-# include header files and libraries
+# include header files and link libraries
 target_include_directories(main PRIVATE ${INCLUDE_PATH})
 target_link_libraries(main PRIVATE ${LIBS})
