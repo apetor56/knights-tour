@@ -65,9 +65,8 @@ inline void shutdownGUI() {
 
 int main(int argc, const char *argv[]) {
     try {
-        Window window("ja nie komar", 900, 900);
+        Window window("ja nie komar", 800, 800);
         initGUI(window);
-        
         int size = 8;
         int startPos = 0;
         int speed = 1;
@@ -75,7 +74,11 @@ int main(int argc, const char *argv[]) {
         Renderer tmp(size);
         tmp.setChessBoard(startPos);
 
-        while(window.shouldClose() == false) {
+        while(true) {
+            if(window.shouldClose()) {
+                return 0;
+            }
+
             window.clearBuffer();
 
             tmp.drawChessBoard();
@@ -83,6 +86,8 @@ int main(int argc, const char *argv[]) {
                 break;
             }
 
+            ImGui::SetWindowPos("Settings", ImVec2(550, 0));
+            ImGui::SetWindowSize("Settings", ImVec2(250, 250));
             window.swapBuffers();
             window.pollEvents();
             window.processInput();
@@ -136,7 +141,6 @@ int main(int argc, const char *argv[]) {
                 window.pollEvents();
                 window.processInput();
             }
-
         }
     }
     catch(Exception& e) {
