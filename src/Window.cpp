@@ -165,7 +165,11 @@ void APIENTRY Window::glDebugOutput(GLenum source, GLenum type, unsigned int id,
     }
     std::cout << '\n';
 
-    __debugbreak();
+    #if defined(__WIN32__)
+        __debugbreak();
+    #elif defined(__linux__)
+        __builtin_trap();
+    #endif
 }
 
 //-----------------------------------------------------------------//
