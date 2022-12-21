@@ -1,5 +1,5 @@
 #include <sstream>
-#include <GLAD/glad.h>
+#include <glad/glad.h>
 #include "Window.hpp"
 
 #define WND_EXC WindowException(__LINE__, __FILE__)
