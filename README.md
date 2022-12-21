@@ -1,3 +1,3 @@
 # Knight's Tour
 
-![](https://github.com/apetor56/Knights-Tour/blob/master/Animation.gif)
+<img src="https://github.com/apetor56/Knights-Tour/blob/master/Animation.gif" width="400" height="400"/>
