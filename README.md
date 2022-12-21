@@ -1,6 +1,6 @@
 # Knight's Tour visualisation
 
-<p aling="center>
+<p align="center>
 <img src="https://github.com/apetor56/Knights-Tour/blob/master/Animation.gif" width="550" height="550"/>
 </p>
 
