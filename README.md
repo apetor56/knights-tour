@@ -1,6 +1,6 @@
 # Knight's Tour visualisation
 
-### A knight's tour is a sequence of moves of a knight on a chessboard such that the knight visits every square exactly once. This is graph theory problem of finding such a path. There is a few ways to resolve that problem, but in this program I used Warnsdorff's heuristic for finding a single knight's tour. More usefull information [here](https://bradfieldcs.com/algos/graphs/knights-tour/).
+A knight's tour is a sequence of moves of a knight on a chessboard such that the knight visits every square exactly once. This is graph theory problem of finding such a path. There is a few ways to resolve that problem, but in this program I used Warnsdorff's heuristic for finding a single knight's tour. More usefull information [here](https://bradfieldcs.com/algos/graphs/knights-tour/).
 <br>
 <p align="center">
 <img src="https://github.com/apetor56/Knights-Tour/blob/master/Animation.gif" width="550" height="550"/>
