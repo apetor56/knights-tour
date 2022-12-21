@@ -55,4 +55,4 @@ __Important__: make sure that cmake and c++ compiler are in environment variable
 <br>
 
 ### Linux:
-It should work but it doesn't <img src="https://github.com/apetor56/Knights-Tour/blob/master/Animation.gif" width="20" height="20"/>
+It should work but it doesn't <img src="https://www.streamscheme.com/wp-content/uploads/2022/02/sadge-600.png" width="20" height="20"/>
