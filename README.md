@@ -6,6 +6,7 @@
 <img src="https://github.com/apetor56/Knights-Tour/blob/master/Animation.gif" width="550" height="550"/>
 </p>
 ---
+
 ## Content
 - `include` - contains header files for OpenGL and algorithm source codes,
 - `lib` - consist of:
