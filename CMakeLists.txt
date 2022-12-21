@@ -18,7 +18,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/bin")
 set(SOURCE_PATH  "${CMAKE_CURRENT_SOURCE_DIR}/src")
 set(INCLUDE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/include"
                  "${CMAKE_CURRENT_SOURCE_DIR}/include/imgui")
-set(LIB_PATH     "${CMAKE_CURRENT_SOURCE_DIR}/lib")
+set(LIB_PATH     "${CMAKE_CURRENT_SOURCE_DIR}/lib/bin")
 
 # list of libs linked later against main program
 list(APPEND LIBS
