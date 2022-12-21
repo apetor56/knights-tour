@@ -52,7 +52,5 @@ __Important__: make sure that cmake and c++ compiler are in environment variable
    `cd ./bin`<br>
    `./main.exe`
 
-<br>
-
 ### Linux:
 It should work but it doesn't <img src="https://www.streamscheme.com/wp-content/uploads/2022/02/sadge-600.png" width="20" height="20"/>
