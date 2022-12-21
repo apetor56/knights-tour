@@ -1,23 +1,15 @@
 cmake_minimum_required(VERSION 3.0.0)
 project(OpenGL VERSION 0.1.0)
 
-# OS specific instructions
-# setting correct preffix and suffix for static libraries
-if(WIN32)
-    set(CMAKE_STATIC_LIBRARY_PREFIX "")
-    set(CMAKE_STATIC_LIBRARY_SUFFIX ".lib")
-elseif(UNIX OR APPLE)
-    set(CMAKE_STATIC_LIBRARY_PREFIX "lib")
-    set(CMAKE_STATIC_LIBRARY_SUFFIX ".a")
-endif()
-
 # compile options for release
-set(CMAKE_CXX_FLAGS_RELEASE_INIT "-std=c++17 -Wall -pedantic")
+set(CMAKE_CXX_FLAGS_RELEASE_INIT "-std=c++11 -Wall -pedantic")
+
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/lib")
 
 # compile options for debugging (including glDebugMessageControl)
 # warning: there will be error relative to line width
 # (without debugging we can change line width over 1)
-set(CMAKE_CXX_FLAGS_DEBUG_INIT "-std=c++17 -g -Wall -pedantic -D glDebug")
+set(CMAKE_CXX_FLAGS_DEBUG_INIT "-std=c++11 -g -Wall -pedantic -D glDebug")
 
 # set more convenient .exe output directory
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/bin")
@@ -30,8 +22,8 @@ set(LIB_PATH     "${CMAKE_CURRENT_SOURCE_DIR}/lib")
 
 # list of libs linked later against main program
 list(APPEND LIBS
-    ${LIB_PATH}/glad.lib
-    ${LIB_PATH}/glfw3.lib
+    ${LIB_PATH}/libglad.a
+    ${LIB_PATH}/libglfw3.a
 )
 
 #create main program
