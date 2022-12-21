@@ -53,3 +53,6 @@ __Important__: make sure that cmake and c++ compiler are in environment variable
    `./main.exe`
 
 <br>
+
+### Linux:
+It should work but it doesn't <img src="https://github.com/apetor56/Knights-Tour/blob/master/Animation.gif" width="20" height="20"/>
