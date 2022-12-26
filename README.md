@@ -17,7 +17,7 @@ A knight's tour is a sequence of moves of a knight on a chessboard such that the
 - `src` - implementation of algorithm and graphical content,
 - `tex` - knight texture,
 - `CMakeLists.txt` - top level CMakelist, used to build main program,
-- `setup.sh` - build whole project
+- `setup.bat` - build whole project
 
 Additionally `.vscode` contains files for debugging and build task. Files used only for knight's tour algorithm:
 - `Graph.hpp`,
@@ -39,11 +39,11 @@ __Important__: make sure that cmake and c++ compiler are in environment variable
 
 2. Navigate to root folder and in terminal add executable permission for setup script:
 
-    `chmod +x setup.sh`
+    `chmod +x setup.bat`
 
 3. Run script:
 
-    `./setup.sh`
+    `./setup.bat`
 
     It could take a while, because whole libraries for OpenGL and GLFW3 are built from scratch.
 
